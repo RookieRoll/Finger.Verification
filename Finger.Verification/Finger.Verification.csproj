@@ -9,4 +9,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Rules\String\" />
+    <Folder Include="Rules\Int\" />
+    <Folder Include="Rules\Float\" />
+  </ItemGroup>
+
 </Project>
