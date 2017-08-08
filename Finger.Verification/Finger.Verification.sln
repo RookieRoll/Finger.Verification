@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finger.Verification", "Finger.Verification.csproj", "{D0962E59-0C6F-49E1-902C-67C04EF7835D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finger.Web", "..\Finger.Web\Finger.Web.csproj", "{E208CA30-51B2-4DBD-B823-BB74921583AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D0962E59-0C6F-49E1-902C-67C04EF7835D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0962E59-0C6F-49E1-902C-67C04EF7835D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0962E59-0C6F-49E1-902C-67C04EF7835D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E208CA30-51B2-4DBD-B823-BB74921583AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E208CA30-51B2-4DBD-B823-BB74921583AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E208CA30-51B2-4DBD-B823-BB74921583AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E208CA30-51B2-4DBD-B823-BB74921583AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
