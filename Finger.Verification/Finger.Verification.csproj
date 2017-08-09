@@ -10,9 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Rules\String\" />
     <Folder Include="Rules\Int\" />
-    <Folder Include="Rules\Float\" />
+    <Folder Include="Rules\String\" />
   </ItemGroup>
 
 </Project>
