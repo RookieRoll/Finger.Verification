@@ -3,19 +3,18 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 
-namespace Finger.Verification.Rules.Float
+namespace Finger.Verification.Rules.Int
 {
-    public class FloatRuleAttribute : ActionFilterAttribute
+    public class IntRuleAttribute : ActionFilterAttribute
     {
         public float MaxValue { get; set; } = float.MaxValue;
         public float MinValue { get; set; } = float.MinValue;
         public string PropName { get; private set; }
         public string ErrorMessage { get; set; }
 
-        public FloatRuleAttribute(string propName)
+        public IntRuleAttribute(string propName)
         {
             PropName = propName;
         }
@@ -34,7 +33,7 @@ namespace Finger.Verification.Rules.Float
                 context.Result = new JsonResult(string.IsNullOrWhiteSpace(ErrorMessage) ? "没有找到该参数" : ErrorMessage);
                 return;
             }
-            var value = temp.SingleOrDefault().Value as float?;
+            var value = temp.SingleOrDefault().Value as int?;
             if (value == null)
             {
                 context.Result = new JsonResult(string.IsNullOrWhiteSpace(ErrorMessage) ? "该参数的数据不能为空" : ErrorMessage);
