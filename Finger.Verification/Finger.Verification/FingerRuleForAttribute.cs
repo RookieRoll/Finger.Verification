@@ -7,7 +7,7 @@ namespace Finger.Verification
 {
     public class FingerRuleForAttribute:ActionFilterAttribute
     {
-        private readonly FingerVerificationTool _verifcation;
+        private readonly IFingerVerification _verifcation;
         
 //        /// <summary>
 //        /// int,float,double minvalue

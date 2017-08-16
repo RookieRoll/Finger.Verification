@@ -5,50 +5,34 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Finger.Verification.Rules
 {
-    public class StringRuleVerification:FingerVerificationTool
+    public class StringRuleVerification:IFingerVerification
     {
         public string Name { get; set; }
-        public double MinLength
-        {
-            get => MinLength;
-            set => MinLength = double.MinValue;
-        }
+        public double MinLength { get; set; }
 
         /// <summary>
         /// string max length
         /// </summary>
-        public double MaxLength
-        {
-            get => MaxLength;
-            set { MaxLength = double.MaxValue; }
-        }
+        public double MaxLength { get; set; }
 
         /// <summary>
         /// the parameter is null
         /// </summary>
-        public bool IsRequired
-        {
-            get => IsRequired;
-            set => IsRequired = true;
-        }
+        public bool IsRequired { get; set; }
 
-        public bool IsNull
-        {
-            get => IsNull;
-            set => IsNull = true;
-        }
+        public bool IsNull { get; set; }
 
         public StringRuleVerification(string parameterName, bool isNull, bool isRequired, double minLength,
             double maxLength)
         {
             IsNull = isNull;
             IsRequired = isRequired;
-            MinLength =  minLength;
-            MaxLength =maxLength;
+            MinLength = minLength;
+            MaxLength = maxLength;
             Name = parameterName;
         }
 
-        public override bool Verification(ActionExecutingContext context)
+        public bool Verification(ActionExecutingContext context)
         {
             var value = context.ActionArguments[Name];
             if (value == null && IsNull)
