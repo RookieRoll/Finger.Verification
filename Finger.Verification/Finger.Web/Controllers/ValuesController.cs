@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Finger.Verification;
-using System.IO;
 
 namespace Finger.Web.Controllers
 {
@@ -15,12 +13,11 @@ namespace Finger.Web.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] {"value1", "value2"};
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        [FingerRuleFor(rules = new object[] { })]
         public string Get(int id)
         {
             return "value";
@@ -28,13 +25,13 @@ namespace Finger.Web.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)
         {
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 
