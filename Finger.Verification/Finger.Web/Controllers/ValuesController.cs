@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Finger.Verification;
+using Microsoft.AspNetCore.Antiforgery.Internal;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Finger.Web.Controllers
@@ -11,7 +13,8 @@ namespace Finger.Web.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        [FingerRuleFor("name",true,true,10,100)]
+        public IEnumerable<string> Get(string name)
         {
             return new string[] {"value1", "value2"};
         }

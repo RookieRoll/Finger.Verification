@@ -7,8 +7,7 @@ namespace Finger.Verification
 {
     public class FingerRuleForAttribute:ActionFilterAttribute
     {
-        private ActionExecutingContext _context;
-        private readonly FingerVerification _verifcation;
+        private readonly FingerVerificationTool _verifcation;
         
 //        /// <summary>
 //        /// int,float,double minvalue
@@ -61,10 +60,10 @@ namespace Finger.Verification
 //            set => IsNull = true;
 //        }
 
-        public FingerRuleForAttribute(string parameterName,bool?isNull,bool? isRequired,double? minLength,double? maxLength)
+        public FingerRuleForAttribute(string parameterName,bool isNull,bool  isRequired,double minLength,double maxLength)
         {
             //string verification
-            _verifcation = new StringRuleVerification(parameterName,isNull,isRequired,minLength,maxLength,_context);
+            _verifcation = new StringRuleVerification(parameterName,isNull,isRequired,minLength,maxLength);
         }
 
         public FingerRuleForAttribute(string parameterName,bool? isRequired, double? minValue, double? maxValue)
@@ -74,8 +73,7 @@ namespace Finger.Verification
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            _context = context;
-            if (!_verifcation.Verification())
+            if (!_verifcation.Verification(context))
             {
                 throw new HttpRequestException(HttpStatusCode.InternalServerError+"");
             }

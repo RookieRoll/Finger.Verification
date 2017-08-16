@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Finger.Verification.Rules
 {
-    public class StringRuleVerification:FingerVerification
+    public class StringRuleVerification:FingerVerificationTool
     {
-        private readonly ActionExecutingContext _context;
         public string Name { get; set; }
         public double MinLength
         {
@@ -39,20 +38,19 @@ namespace Finger.Verification.Rules
             set => IsNull = true;
         }
 
-        public StringRuleVerification(string parameterName, bool? isNull, bool? isRequired, double? minLength,
-            double? maxLength, ActionExecutingContext context)
+        public StringRuleVerification(string parameterName, bool isNull, bool isRequired, double minLength,
+            double maxLength)
         {
-            if (isNull != null) IsNull = (bool) isNull;
-            if (isRequired != null) IsRequired = (bool) isRequired;
-            if (minLength != null) MinLength = (double) minLength;
-            if (maxLength != null) MaxLength = (double) maxLength;
-            _context = context;
+            IsNull = isNull;
+            IsRequired = isRequired;
+            MinLength =  minLength;
+            MaxLength =maxLength;
             Name = parameterName;
         }
 
-        public override bool Verification()
+        public override bool Verification(ActionExecutingContext context)
         {
-            var value = _context.ActionArguments[Name];
+            var value = context.ActionArguments[Name];
             if (value == null && IsNull)
             {
                 return false;
