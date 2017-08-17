@@ -7,10 +7,10 @@ namespace Finger.Verification.Rules
     {
         internal string Name { get; set; }
         internal bool IsRequired { get; set; }
-        public BaseRuleVerification(string parameterName, bool isReauired)
+        public BaseRuleVerification(string parameterName, bool isRequired)
         {
             Name = parameterName;
-            IsRequired = isReauired;
+            IsRequired = isRequired;
         }
 
         public virtual bool Verification(ActionExecutingContext context)
