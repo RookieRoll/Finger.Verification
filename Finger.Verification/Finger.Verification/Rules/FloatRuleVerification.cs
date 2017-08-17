@@ -9,8 +9,8 @@ namespace Finger.Verification.Rules
         internal float MinValue { get; set; }
         internal float MaxValue { get; set; }
 
-        public FloatRuleVerification(string parameterNmae, bool isReauired, float minValue, float maxValue) : base(
-            parameterNmae, isReauired)
+        public FloatRuleVerification(string parameterNmae, bool isRequired, float minValue, float maxValue) : base(
+            parameterNmae, isRequired)
         {
             MaxValue = maxValue;
             MinValue = minValue;
