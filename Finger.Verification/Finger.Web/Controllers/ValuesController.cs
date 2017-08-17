@@ -13,7 +13,7 @@ namespace Finger.Web.Controllers
     {
         // GET api/values
         [HttpGet]
-        [FingerRuleFor("name",true,true,10,100)]
+        [FingerRuleFor("name",true,true,10,100,"参数有误")]
         public IEnumerable<string> Get(string name)
         {
             return new string[] {"value1", "value2"};

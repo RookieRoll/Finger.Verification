@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using Finger.Verification.Rules;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -8,7 +9,6 @@ namespace Finger.Verification
     public class FingerRuleForAttribute:ActionFilterAttribute
     {
         private readonly IFingerVerification _verifcation;
-        
 //        /// <summary>
 //        /// int,float,double minvalue
 //        /// </summary>
@@ -59,14 +59,19 @@ namespace Finger.Verification
 //            get => IsNull;
 //            set => IsNull = true;
 //        }
-
+           
+        public FingerRuleForAttribute(string parameterNmae, bool isReauired)
+        {
+            //base verification 
+            
+        }
         public FingerRuleForAttribute(string parameterName,bool isNull,bool  isRequired,double minLength,double maxLength)
         {
             //string verification
             _verifcation = new StringRuleVerification(parameterName,isNull,isRequired,minLength,maxLength);
         }
 
-        public FingerRuleForAttribute(string parameterName,bool? isRequired, double? minValue, double? maxValue)
+        public FingerRuleForAttribute(string parameterName,bool isRequired, double minValue, double maxValue)
         {
             //int verification
         }
@@ -75,7 +80,7 @@ namespace Finger.Verification
         {
             if (!_verifcation.Verification(context))
             {
-                throw new HttpRequestException(HttpStatusCode.InternalServerError+"");
+                throw new HttpRequestException(HttpStatusCode.InternalServerError.ToString());
             }
         }
     }

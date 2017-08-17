@@ -35,15 +35,15 @@ namespace Finger.Verification.Rules
         public bool Verification(ActionExecutingContext context)
         {
             var value = context.ActionArguments[Name];
-            if (value == null && IsNull)
+            if (value == null && !IsRequired)
             {
                 return false;
             }
-            if (value.ToString().Length < MinLength || value.ToString().Length > MaxLength)
+            if (value == null && !IsNull)
             {
                 return false;
             }
-            return true;
+            return !(value.ToString().Length < MinLength) && !(value.ToString().Length > MaxLength);
         }
     }
 }
