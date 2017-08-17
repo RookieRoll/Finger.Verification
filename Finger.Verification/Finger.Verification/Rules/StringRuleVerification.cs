@@ -34,7 +34,7 @@ namespace Finger.Verification.Rules
 
         public bool Verification(ActionExecutingContext context)
         {
-            var value = context.ActionArguments[Name];
+            var value = (string)context.ActionArguments[Name];
             if (value == null && !IsRequired)
             {
                 return false;
@@ -43,7 +43,7 @@ namespace Finger.Verification.Rules
             {
                 return false;
             }
-            return !(value.ToString().Length < MinLength) && !(value.ToString().Length > MaxLength);
+            return !(value.Length < MinLength) && !(value.Length > MaxLength);
         }
     }
 }

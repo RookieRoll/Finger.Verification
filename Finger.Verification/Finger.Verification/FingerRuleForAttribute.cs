@@ -3,75 +3,41 @@ using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using Finger.Verification.Rules;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.CodeAnalysis;
 
 namespace Finger.Verification
 {
     public class FingerRuleForAttribute:ActionFilterAttribute
     {
         private readonly IFingerVerification _verifcation;
-//        /// <summary>
-//        /// int,float,double minvalue
-//        /// </summary>
-//        public double MinValue
-//        {
-//            get=>MinValue;
-//            set => MinValue = double.MinValue;
-//        }
-//
-//        /// <summary>
-//        /// int,float,double Maxvalue
-//        /// </summary>
-//        public double MaxValue
-//        {
-//            get=>MaxValue;
-//            set => MaxValue = double.MaxValue;
-//        }
-//
-//        /// <summary>
-//        /// string min length
-//        /// </summary>
-//        public double MinLength
-//        {
-//            get=>MinLength; 
-//            set=>MinLength =double.MinValue;
-//        }
-//
-//        /// <summary>
-//        /// string max length
-//        /// </summary>
-//        public double MaxLength
-//        {
-//            get=>MaxLength;
-//            set { MaxLength = double.MaxValue; }
-//        }
-//
-//        /// <summary>
-//        /// the parameter is null
-//        /// </summary>
-//        public bool IsRequired
-//        {
-//            get => IsRequired;
-//            set => IsRequired = true;
-//        }
-//
-//        public bool IsNull
-//        {
-//            get => IsNull;
-//            set => IsNull = true;
-//        }
-           
-        public FingerRuleForAttribute(string parameterNmae, bool isReauired)
+
+        
+        /// <summary>
+        /// base rule verification 
+        /// </summary>
+        /// <param name="parameterNmae"></param>
+        /// <param name="isRequired"></param>
+        public FingerRuleForAttribute(string parameterNmae, bool isRequired)
         {
             //base verification 
-            
+            _verifcation = new BaseRuleVerification(parameterNmae,isRequired);
         }
-        public FingerRuleForAttribute(string parameterName,bool isNull,bool  isRequired,double minLength,double maxLength)
+         
+        /// <summary>
+        /// string rule verification
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <param name="isNull"></param>
+        /// <param name="isRequired"></param>
+        /// <param name="minLength"></param>
+        /// <param name="maxLength"></param>
+        public FingerRuleForAttribute(string parameterName,bool isNull,bool  isRequired,double minLength=1,double maxLength=double.MaxValue)
         {
             //string verification
             _verifcation = new StringRuleVerification(parameterName,isNull,isRequired,minLength,maxLength);
         }
 
-        public FingerRuleForAttribute(string parameterName,bool isRequired, double minValue, double maxValue)
+        public FingerRuleForAttribute(string parameterName,bool isRequired, double minValue=double.MinValue, double maxValue=double.MaxValue)
         {
             //int verification
         }
