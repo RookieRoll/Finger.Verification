@@ -27,11 +27,14 @@ namespace Finger.Verification.Rules
             }
             catch (KeyNotFoundException ex)
             {
-                return false;
+                if (IsRequired)
+                    return false;
+                else
+                {
+                    var temp = context.ModelState[Name].AttemptedValue;
+                    return string.IsNullOrWhiteSpace(temp) ? true : false;
+                }
             }
-
-            if (value == null)
-                return false;
             return (value <= MaxValue && value >= MinValue);
         }
     }
