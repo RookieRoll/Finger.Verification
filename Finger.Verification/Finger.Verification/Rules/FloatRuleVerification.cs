@@ -32,7 +32,7 @@ namespace Finger.Verification.Rules
                 else
                 {
                     var temp = context.ModelState[Name].AttemptedValue;
-                    return string.IsNullOrWhiteSpace(temp) ? true : false;
+                    return string.IsNullOrEmpty(temp) ? true : false;
                 }
             }
             return (value <= MaxValue && value >= MinValue);

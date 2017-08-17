@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Mvc.Filters;

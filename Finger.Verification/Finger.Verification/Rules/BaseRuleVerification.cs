@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Finger.Verification.Rules
 {
-    internal class BaseRuleVerification:IFingerVerification
+    public class BaseRuleVerification:IFingerVerification
     {
         internal string Name { get; set; }
         internal bool IsRequired { get; set; }
