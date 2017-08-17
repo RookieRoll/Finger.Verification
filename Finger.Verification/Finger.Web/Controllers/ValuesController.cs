@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +15,13 @@ namespace Finger.Web.Controllers
         [HttpGet]
         [FingerRuleFor("name",true,true,10,100)]
         public IEnumerable<string> Get(string name)
+        {
+            return new string[] {"value1", "value2"};
+        }
+        
+        [HttpGet("GetFloatTest")]
+        [FingerRuleFor(parameterName:"name",isRequired:true,minValue:1.0f,maxValue:34f)]
+        public IEnumerable<string> GetFloatTest(float name)
         {
             return new string[] {"value1", "value2"};
         }

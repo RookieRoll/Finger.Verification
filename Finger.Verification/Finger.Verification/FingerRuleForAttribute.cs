@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using Finger.Verification.Rules;
@@ -36,9 +36,16 @@ namespace Finger.Verification
             //string verification
             _verifcation = new StringRuleVerification(parameterName,isNull,isRequired,minLength,maxLength);
         }
-
+        /// <summary>
+        /// int ruleverification    
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <param name="isRequired"></param>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
         public FingerRuleForAttribute(string parameterName,bool isRequired, double minValue=double.MinValue, double maxValue=double.MaxValue)
         {
+            _verifcation=new FloatRuleVerification(parameterName,isRequired,(float)minValue,(float)maxValue);
             //int verification
         }
 
